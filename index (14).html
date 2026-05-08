@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vikal Impex — Export House, India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ─────────────────────────────────────────────
+   RESET & TOKENS
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:   #0f1e35;
+  --navy2:  #162847;
+  --gold:   #c9a84c;
+  --gold2:  #e6c96a;
+  --offwhite: #f8f5ef;
+  --text:   #1a1a2e;
+  --muted:  #6b7280;
+  --border: rgba(201,168,76,0.25);
+  --ff-display: 'Playfair Display', Georgia, serif;
+  --ff-body:    'Outfit', sans-serif;
+  --shadow: 0 4px 32px rgba(15,30,53,0.10);
+  --shadow-lg: 0 12px 60px rgba(15,30,53,0.18);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-body);
+  color: var(--text);
+  background: var(--offwhite);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--offwhite); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ─────────────────────────────────────────────
+   UTILITY
+───────────────────────────────────────────── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.gold { color: var(--gold); }
+.tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 5px 14px;
+  border-radius: 2px;
+  background: rgba(201,168,76,0.06);
+}
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--navy);
+  margin-bottom: 18px;
+}
+.section-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 540px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 30px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.btn-primary:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.35);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: transparent;
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s;
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+.divider {
+  width: 52px; height: 3px;
+  background: var(--gold);
+  margin: 20px 0 28px;
+}
+
+/* ─────────────────────────────────────────────
+   NAVBAR
+───────────────────────────────────────────── */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+  padding: 22px 0;
+}
+#navbar.scrolled {
+  background: rgba(15,30,53,0.97);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 2px 30px rgba(0,0,0,0.25);
+  padding: 14px 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-logo {
+  width: 38px; height: 38px;
+  background: var(--gold);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+.nav-name {
+  font-family: var(--ff-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  line-height: 1;
+}
+.nav-name span {
+  display: block;
+  font-family: var(--ff-body);
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 2px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.72);
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--gold);
+  transition: width 0.25s;
+}
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+  padding: 9px 22px;
+  border-radius: 2px;
+  transition: background 0.25s, color 0.25s;
+}
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: rgba(15,30,53,0.98);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  padding: 24px 40px;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: color 0.2s;
+}
+.mobile-nav a:hover { color: var(--gold); }
+.mobile-nav .nav-cta {
+  margin-top: 16px;
+  text-align: center;
+  padding: 12px;
+}
+
+/* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 75% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(22,40,71,0.8) 0%, transparent 60%),
+    linear-gradient(135deg, #0f1e35 0%, #162847 50%, #0f1e35 100%);
+}
+/* Geometric decorative elements */
+.hero-geo {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 50%;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-geo::before {
+  content: '';
+  position: absolute;
+  right: -100px; top: 50%;
+  transform: translateY(-50%);
+  width: 600px; height: 600px;
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 50%;
+}
+.hero-geo::after {
+  content: '';
+  position: absolute;
+  right: 60px; top: 50%;
+  transform: translateY(-50%);
+  width: 380px; height: 380px;
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 50%;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-left {}
+.hero-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 0.7s 0.2s both;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+}
+.hero-h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 10px;
+  animation: fadeUp 0.8s 0.35s both;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-tagline {
+  font-family: var(--ff-display);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-style: italic;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 26px;
+  animation: fadeUp 0.8s 0.45s both;
+}
+.hero-desc {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.78;
+  max-width: 480px;
+  margin-bottom: 36px;
+  animation: fadeUp 0.8s 0.55s both;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.65s both;
+}
+/* Hero right — stats card */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeUp 0.9s 0.5s both;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 22px 20px;
+  transition: border-color 0.25s, background 0.25s;
+}
+.stat-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  background: rgba(201,168,76,0.06);
+}
+.stat-card:nth-child(2) { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.3); }
+.stat-num {
+  font-family: var(--ff-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+}
+.hero-markets {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 20px;
+}
+.hero-markets-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.market-flags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.flag-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.75);
+  transition: border-color 0.2s, color 0.2s;
+}
+.flag-pill:hover { border-color: var(--gold); color: var(--gold2); }
+/* Hero scroll hint */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: fadeIn 1s 1.2s both;
+}
+.hero-scroll span {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.scroll-dot {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollAnim 2s 1.2s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────
+   MARQUEE TICKER
+───────────────────────────────────────────── */
+.ticker-wrap {
+  background: var(--gold);
+  padding: 11px 0;
+  overflow: hidden;
+  position: relative;
+}
+.ticker {
+  display: flex;
+  gap: 0;
+  animation: ticker 28s linear infinite;
+  white-space: nowrap;
+}
+.ticker-item {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ticker-item::after {
+  content: '◆';
+  font-size: 0.45rem;
+  color: var(--navy2);
+}
+
+/* ─────────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────────── */
+#about {
+  padding: 110px 0;
+  background: var(--offwhite);
+  position: relative;
+}
+#about::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.35;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-card-main {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 48px 40px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.about-card-main::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+}
+.about-card-main::after {
+  content: '"VI"';
+  position: absolute;
+  bottom: -20px; right: -10px;
+  font-family: var(--ff-display);
+  font-size: 9rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+}
+.about-card-quote {
+  font-family: var(--ff-display);
+  font-size: 1.45rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.about-card-quote span { color: var(--gold); }
+.about-card-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+.about-float {
+  position: absolute;
+  bottom: -24px; right: -24px;
+  background: var(--gold);
+  border-radius: 6px;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.about-float-num {
+  font-family: var(--ff-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+.about-float-txt {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy2);
+  margin-top: 4px;
+}
+.about-text {}
+.about-body {
+  font-size: 0.97rem;
+  color: #4b5563;
+  line-height: 1.85;
+  margin-bottom: 20px;
+}
+.about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+.pillar {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.pillar-icon {
+  width: 36px; height: 36px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+.pillar-text strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.pillar-text span {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────
+   PRODUCTS
+───────────────────────────────────────────── */
+#products {
+  padding: 110px 0;
+  background: #fff;
+}
+.products-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.products-header .section-label { justify-content: center; }
+.products-header .section-label::before { display: none; }
+.products-header .divider { margin: 20px auto 28px; }
+.products-header .section-sub { margin: 0 auto; }
+.product-categories {
+  display: flex;
+  gap: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin-bottom: 48px;
+  overflow: hidden;
+}
+.cat-tab {
+  flex: 1;
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.25s;
+  border-right: 1px solid #e5e7eb;
+  position: relative;
+}
+.cat-tab:last-child { border-right: none; }
+.cat-tab.active {
+  background: var(--navy);
+  color: var(--gold);
+}
+.cat-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.2s;
+}
+.cat-tab:not(.active):hover { background: var(--offwhite); color: var(--navy); }
+.product-panel { display: none; }
+.product-panel.active { display: block; }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.product-card {
+  background: var(--offwhite);
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 28px 24px;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--gold);
+  transition: height 0.3s;
+}
+.product-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+.product-card:hover::before { height: 100%; }
+.product-icon { font-size: 1.8rem; margin-bottom: 14px; }
+.product-name {
+  font-family: var(--ff-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.product-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.cert-strip {
+  margin-top: 40px;
+  background: var(--navy);
+  border-radius: 6px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cert-strip-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.cert-strip-divider {
+  width: 1px; height: 20px;
+  background: rgba(255,255,255,0.15);
+}
+.cert-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cert-badge {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* ─────────────────────────────────────────────
+   MARKETS
+───────────────────────────────────────────── */
+#markets {
+  padding: 110px 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+#markets::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border: 1px solid rgba(201,168,76,0.06);
+  border-radius: 50%;
+}
+#markets::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -150px;
+  width: 500px; height: 500px;
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 50%;
+}
+.markets-header {
+  margin-bottom: 60px;
+}
+.markets-header .section-label { color: var(--gold2); }
+.markets-header .section-title { color: #fff; }
+.markets-header .section-sub { color: rgba(255,255,255,0.55); }
+.markets-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+.market-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  cursor: default;
+}
+.market-card:hover {
+  border-color: rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.07);
+  transform: translateY(-4px);
+}
+.market-flag { font-size: 2.4rem; margin-bottom: 14px; }
+.market-name {
+  font-family: var(--ff-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.market-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.market-tag {
+  font-size: 0.66rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+}
+.currency-bar {
+  margin-top: 44px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.currency-bar p {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 14px;
+}
+.currency-pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.currency-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 6px 20px;
+  border-radius: 20px;
+}
+
+/* ─────────────────────────────────────────────
+   WHY CHOOSE
+───────────────────────────────────────────── */
+#why {
+  padding: 110px 0;
+  background: var(--offwhite);
+}
+.why-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.why-header .section-label { justify-content: center; }
+.why-header .section-label::before { display: none; }
+.why-header .divider { margin: 20px auto 28px; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.why-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 36px 30px;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+}
+.why-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: rgba(201,168,76,0.3);
+}
+.why-card:nth-child(1) { border-top: 3px solid var(--gold); }
+.why-card:nth-child(2) { border-top: 3px solid #2c5282; }
+.why-card:nth-child(3) { border-top: 3px solid #276749; }
+.why-card:nth-child(4) { border-top: 3px solid #744210; }
+.why-card:nth-child(5) { border-top: 3px solid #553c9a; }
+.why-card:nth-child(6) { border-top: 3px solid var(--gold); }
+.why-icon {
+  width: 48px; height: 48px;
+  background: rgba(201,168,76,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+}
+.why-title {
+  font-family: var(--ff-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.why-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────
+   PROCESS
+───────────────────────────────────────────── */
+#process {
+  padding: 110px 0;
+  background: #fff;
+}
+.process-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.process-header .section-label { justify-content: center; }
+.process-header .section-label::before { display: none; }
+.process-header .divider { margin: 20px auto 28px; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px; left: 8.33%; right: 8.33%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2));
+  z-index: 0;
+}
+.process-step {
+  text-align: center;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+}
+.step-num {
+  width: 56px; height: 56px;
+  background: var(--navy);
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 auto 20px;
+  transition: background 0.25s, transform 0.25s;
+}
+.process-step:hover .step-num {
+  background: var(--gold);
+  color: var(--navy);
+  transform: scale(1.1);
+}
+.step-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+.step-desc {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────
+   CERTIFICATIONS
+───────────────────────────────────────────── */
+#certifications {
+  padding: 80px 0;
+  background: var(--offwhite);
+  border-top: 1px solid #e5e7eb;
+}
+.cert-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.cert-header .section-label { justify-content: center; }
+.cert-header .section-label::before { display: none; }
+.cert-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.cert-col {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cert-col-header {
+  background: var(--navy);
+  padding: 14px 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.cert-col-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #374151;
+}
+.cert-item::before {
+  content: '✓';
+  font-size: 0.7rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   CTA BAND
+───────────────────────────────────────────── */
+#cta-band {
+  padding: 90px 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#cta-band::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  border: 1px solid rgba(201,168,76,0.06);
+  border-radius: 50%;
+}
+.cta-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.cta-h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+  position: relative;
+}
+.cta-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 36px;
+  position: relative;
+}
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────────── */
+#contact {
+  padding: 110px 0;
+  background: #fff;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-info {}
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 32px;
+}
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.contact-item-icon {
+  width: 44px; height: 44px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.contact-item-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.contact-item-value {
+  font-size: 0.92rem;
+  color: var(--navy);
+  font-weight: 500;
+}
+.contact-item-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+/* Form */
+.contact-form-wrap {
+  background: var(--offwhite);
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 40px;
+}
+.form-title {
+  font-family: var(--ff-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.form-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group {
+  margin-bottom: 18px;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 7px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px 14px;
+  font-family: var(--ff-body);
+  font-size: 0.88rem;
+  color: var(--text);
+  background: #fff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: var(--ff-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  margin-top: 6px;
+}
+.form-submit:hover {
+  background: var(--navy2);
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: 60px 0 28px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand-name {
+  font-family: var(--ff-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.footer-brand-sub {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.footer-about {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 280px;
+}
+.footer-col-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.footer-links a {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold2); }
+.footer-bottom {
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+.footer-tagline {
+  font-family: var(--ff-display);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(201,168,76,0.6);
+}
+
+/* ─────────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes scrollAnim {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-right { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero-markets { grid-column: 1/-1; }
+  .markets-grid { grid-template-columns: repeat(3, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .process-steps::before { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-float { position: relative; bottom: auto; right: auto; margin-top: 16px; display: inline-block; }
+  .markets-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .cert-columns { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .product-categories { flex-direction: column; }
+  .cat-tab { border-right: none; border-bottom: 1px solid #e5e7eb; }
+  .markets-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .hero-h1 { font-size: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─────────────────────────────── -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">
+        <div class="nav-logo">VI</div>
+        <div class="nav-name">
+          Vikal Impex
+          <span>Export House · India</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#markets">Markets</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Request a Quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#products" class="mobile-link">Products</a>
+  <a href="#markets" class="mobile-link">Markets</a>
+  <a href="#why" class="mobile-link">Why Us</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="nav-cta">Request a Quote</a>
+</div>
+
+<!-- ─── HERO ─────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-geo"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Export House · India</div>
+        <h1 class="hero-h1">
+          Where Indian<br/>
+          <em>Excellence</em> Meets<br/>
+          Global Demand.
+        </h1>
+        <p class="hero-tagline">— Reliably Indian. Globally Ready.</p>
+        <p class="hero-desc">
+          Vikal Impex is a professionally managed Indian export company delivering premium Agro Products, FMCG goods, and Non-Medical Consumables to buyers across the UAE, UK, USA, Africa, and Europe — with full compliance and end-to-end logistics support.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            Request a Quote
+          </a>
+          <a href="#products" class="btn-ghost">Explore Products</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Global Markets</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Product Categories</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">4<span style="font-size:1.4rem"> hrs</span></div>
+            <div class="stat-label">Response Guarantee</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Compliance Record</div>
+          </div>
+        </div>
+        <div class="hero-markets">
+          <div class="hero-markets-label">Active Trade Regions</div>
+          <div class="market-flags">
+            <div class="flag-pill">🇦🇪 UAE &amp; Middle East</div>
+            <div class="flag-pill">🇬🇧 United Kingdom</div>
+            <div class="flag-pill">🇺🇸 United States</div>
+            <div class="flag-pill">🌍 Africa</div>
+            <div class="flag-pill">🇪🇺 Europe</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-dot"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ─── TICKER ─────────────────────────────── -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <div class="ticker-item">Agro Products</div>
+    <div class="ticker-item">FMCG Goods</div>
+    <div class="ticker-item">Non-Medical Consumables</div>
+    <div class="ticker-item">APEDA Registered</div>
+    <div class="ticker-item">FSSAI Licensed</div>
+    <div class="ticker-item">ISO 9001 Certified</div>
+    <div class="ticker-item">Halal Available</div>
+    <div class="ticker-item">FDA Ready</div>
+    <div class="ticker-item">Private Label Ready</div>
+    <div class="ticker-item">48-Hr Quote Guarantee</div>
+    <div class="ticker-item">Agro Products</div>
+    <div class="ticker-item">FMCG Goods</div>
+    <div class="ticker-item">Non-Medical Consumables</div>
+    <div class="ticker-item">APEDA Registered</div>
+    <div class="ticker-item">FSSAI Licensed</div>
+    <div class="ticker-item">ISO 9001 Certified</div>
+    <div class="ticker-item">Halal Available</div>
+    <div class="ticker-item">FDA Ready</div>
+    <div class="ticker-item">Private Label Ready</div>
+    <div class="ticker-item">48-Hr Quote Guarantee</div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-card-main">
+          <p class="about-card-quote">
+            "Every shipment carries our promise: <span>right product, right quality, right documentation,</span> on time."
+          </p>
+          <p class="about-card-sub">
+            From sample approvals and price negotiation through pre-shipment inspections, export documentation, and post-delivery support — we are your single point of accountability in India.
+          </p>
+        </div>
+        <div class="about-float">
+          <div class="about-float-num">100%</div>
+          <div class="about-float-txt">Compliance<br/>Record</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">About Vikal Impex</div>
+        <h2 class="section-title">Your Dedicated Sourcing Partner in India</h2>
+        <div class="divider"></div>
+        <p class="about-body">
+          Vikal Impex is a professionally managed Indian export house specializing in the global trade of Agro Products, FMCG goods, and Non-Medical Consumables. We serve importers, distributors, wholesalers, and retail chains across five major international markets — partners who demand consistent quality, reliable documentation, and responsive supplier relationships.
+        </p>
+        <p class="about-body">
+          Our operational model is built on rigorous product sourcing from certified Indian manufacturers and farms, full regulatory compliance with destination-country import standards, and end-to-end logistics support that ensures your cargo arrives on schedule, correctly documented, and in pristine condition.
+        </p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🌾</div>
+            <div class="pillar-text">
+              <strong>Direct Farm &amp; Factory Access</strong>
+              <span>Supply chain bypasses middlemen — sourced directly from FSSAI-approved, ISO-certified facilities.</span>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📋</div>
+            <div class="pillar-text">
+              <strong>Compliance-First Documentation</strong>
+              <span>Complete export packages: COA, COO, Phytosanitary, APEDA, FSSAI, and destination-specific certificates.</span>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-text">
+              <strong>Dedicated Account Manager</strong>
+              <span>Each buyer relationship managed by a single contact for seamless, responsive communication.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─────────────────────────────── -->
+<section id="products">
+  <div class="container">
+    <div class="products-header reveal">
+      <div class="section-label">Product Portfolio</div>
+      <h2 class="section-title">Three Export Categories.<br/>One Reliable Partner.</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Every product sourced from certified Indian manufacturers and farms, with destination-specific compliance packaging.</p>
+    </div>
+    <div class="product-categories reveal">
+      <button class="cat-tab active" onclick="showCat('agro', this)">🌾 Agro Products</button>
+      <button class="cat-tab" onclick="showCat('fmcg', this)">🛒 FMCG Products</button>
+      <button class="cat-tab" onclick="showCat('consumables', this)">📦 Non-Medical Consumables</button>
+    </div>
+
+    <!-- Agro -->
+    <div class="product-panel active" id="panel-agro">
+      <div class="product-grid">
+        <div class="product-card"><div class="product-icon">🍚</div><div class="product-name">Basmati Rice</div><div class="product-desc">Premium aged, extra long grain. APEDA certified, export-grade. Available in 1kg–50kg bags.</div></div>
+        <div class="product-card"><div class="product-icon">🌾</div><div class="product-name">Non-Basmati Rice</div><div class="product-desc">IR64, Sona Masoori, Parboiled varieties. Large volume supply capability. Custom milling available.</div></div>
+        <div class="product-card"><div class="product-icon">🌶️</div><div class="product-name">Spices</div><div class="product-desc">Turmeric, Chilli, Cumin, Coriander, Black Pepper. Graded, cleaned, and EU/US compliant.</div></div>
+        <div class="product-card"><div class="product-icon">🫘</div><div class="product-name">Pulses &amp; Lentils</div><div class="product-desc">Chana, Toor, Urad, Moong Dal. Cleaned, sorted, and packed in buyer-specified sizes.</div></div>
+        <div class="product-card"><div class="product-icon">🥜</div><div class="product-name">Dry Fruits &amp; Nuts</div><div class="product-desc">Cashews, Peanuts, Sesame Seeds, Raisins. Grade A export quality with moisture control.</div></div>
+        <div class="product-card"><div class="product-icon">🧅</div><div class="product-name">Fresh Vegetables</div><div class="product-desc">Onions, Potatoes, Ginger, Garlic. Pre-shipment inspection, phytosanitary certified.</div></div>
+      </div>
+      <div class="cert-strip">
+        <span class="cert-strip-label">Certifications</span>
+        <div class="cert-strip-divider"></div>
+        <div class="cert-badges">
+          <span class="cert-badge">APEDA</span><span class="cert-badge">FSSAI</span><span class="cert-badge">Phytosanitary</span><span class="cert-badge">Organic (on request)</span><span class="cert-badge">Halal Available</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FMCG -->
+    <div class="product-panel" id="panel-fmcg">
+      <div class="product-grid">
+        <div class="product-card"><div class="product-icon">🥫</div><div class="product-name">Packaged Foods</div><div class="product-desc">Instant mixes, ready-to-eat meals, snacks, condiments, cooking oils, sauces and pastes.</div></div>
+        <div class="product-card"><div class="product-icon">🧃</div><div class="product-name">Beverages</div><div class="product-desc">Juices, energy drinks, herbal teas, flavored water. Private label manufacturing available.</div></div>
+        <div class="product-card"><div class="product-icon">🧴</div><div class="product-name">Personal Care</div><div class="product-desc">Soaps, shampoos, lotions, ayurvedic skincare. FSSAI and BIS certified formulations.</div></div>
+        <div class="product-card"><div class="product-icon">🧹</div><div class="product-name">Household Products</div><div class="product-desc">Detergents, cleaning agents, dishwash, fabric care. REACH and EU-compliant variants.</div></div>
+        <div class="product-card"><div class="product-icon">💊</div><div class="product-name">Health &amp; Nutrition</div><div class="product-desc">Protein supplements, herbal extracts, nutraceuticals, vitamin supplements.</div></div>
+        <div class="product-card"><div class="product-icon">👶</div><div class="product-name">Baby &amp; Child Care</div><div class="product-desc">Safe, certified baby products including diapers, wipes, and toddler snacks.</div></div>
+      </div>
+      <div class="cert-strip">
+        <span class="cert-strip-label">Certifications</span>
+        <div class="cert-strip-divider"></div>
+        <div class="cert-badges">
+          <span class="cert-badge">FSSAI</span><span class="cert-badge">ISO 22000</span><span class="cert-badge">Halal</span><span class="cert-badge">Organic</span><span class="cert-badge">BIS</span><span class="cert-badge">REACH (EU)</span><span class="cert-badge">FDA-Ready</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consumables -->
+    <div class="product-panel" id="panel-consumables">
+      <div class="product-grid">
+        <div class="product-card"><div class="product-icon">🧻</div><div class="product-name">Paper &amp; Tissue Products</div><div class="product-desc">Tissue rolls, paper towels, disposable cups and plates. Hospitality-grade available. FSC certified.</div></div>
+        <div class="product-card"><div class="product-icon">📦</div><div class="product-name">Plastic Packaging</div><div class="product-desc">Packaging films, bags, containers, stretch wraps. Food-grade and industrial variants.</div></div>
+        <div class="product-card"><div class="product-icon">🧼</div><div class="product-name">Cleaning Supplies</div><div class="product-desc">Industrial cleaning agents, surface disinfectants, janitorial consumables.</div></div>
+        <div class="product-card"><div class="product-icon">🏨</div><div class="product-name">Hospitality Products</div><div class="product-desc">Amenity kits, disposable cutlery, linen, hotel toiletries for HoReCa sector.</div></div>
+        <div class="product-card"><div class="product-icon">📝</div><div class="product-name">Office &amp; Stationery</div><div class="product-desc">Writing instruments, notebooks, office consumables. OEM branding available.</div></div>
+        <div class="product-card"><div class="product-icon">🦺</div><div class="product-name">Safety Consumables</div><div class="product-desc">Gloves (non-medical), masks, safety goggles, PPE kits for industrial use.</div></div>
+      </div>
+      <div class="cert-strip">
+        <span class="cert-strip-label">Certifications</span>
+        <div class="cert-strip-divider"></div>
+        <div class="cert-badges">
+          <span class="cert-badge">ISO 9001</span><span class="cert-badge">CE Mark</span><span class="cert-badge">BIS</span><span class="cert-badge">REACH</span><span class="cert-badge">RoHS</span><span class="cert-badge">FSC (Paper)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARKETS ─────────────────────────────── -->
+<section id="markets">
+  <div class="container">
+    <div class="markets-header reveal">
+      <div class="section-label">Global Reach</div>
+      <h2 class="section-title">Five Markets.<br/>One Trusted Source.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.55)">Each market we serve receives a tailored compliance and communication package, with documentation trained to destination-country import regulations.</p>
+    </div>
+    <div class="markets-grid reveal">
+      <div class="market-card">
+        <div class="market-flag">🇦🇪</div>
+        <div class="market-name">UAE &amp; Middle East</div>
+        <div class="market-tags">
+          <span class="market-tag">Halal Certified</span>
+          <span class="market-tag">Arabic Labeling</span>
+          <span class="market-tag">Jebel Ali · Abu Dhabi</span>
+          <span class="market-tag">Large Volume Contracts</span>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇬🇧</div>
+        <div class="market-name">United Kingdom</div>
+        <div class="market-tags">
+          <span class="market-tag">UK Food Standards</span>
+          <span class="market-tag">BRC Certified</span>
+          <span class="market-tag">Ethnic &amp; Mainstream Retail</span>
+          <span class="market-tag">Organic Certifications</span>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇺🇸</div>
+        <div class="market-name">United States</div>
+        <div class="market-tags">
+          <span class="market-tag">FDA Registration</span>
+          <span class="market-tag">USDA Organic</span>
+          <span class="market-tag">Ethnic Grocery Retail</span>
+          <span class="market-tag">East &amp; West Coast</span>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🌍</div>
+        <div class="market-name">Africa</div>
+        <div class="market-tags">
+          <span class="market-tag">Nigeria · Kenya · Egypt</span>
+          <span class="market-tag">Competitive Pricing</span>
+          <span class="market-tag">LC Payment Terms</span>
+          <span class="market-tag">Local Agent Network</span>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇪🇺</div>
+        <div class="market-name">Europe</div>
+        <div class="market-tags">
+          <span class="market-tag">Germany · NL · France</span>
+          <span class="market-tag">EU Regulations</span>
+          <span class="market-tag">HACCP · Sustainability</span>
+          <span class="market-tag">Organic Certifications</span>
+        </div>
+      </div>
+    </div>
+    <div class="currency-bar reveal">
+      <p>Multi-Currency Pricing Available</p>
+      <div class="currency-pills">
+        <span class="currency-pill">USD $</span>
+        <span class="currency-pill">AED د.إ</span>
+        <span class="currency-pill">GBP £</span>
+        <span class="currency-pill">EUR €</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY CHOOSE ─────────────────────────── -->
+<section id="why">
+  <div class="container">
+    <div class="why-header reveal">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Built for Serious Trade Buyers</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Six reasons why importers, distributors, and retail chains around the world choose Vikal Impex as their India sourcing partner.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">📋</div>
+        <div class="why-title">Compliance First</div>
+        <p class="why-text">Every shipment comes with complete COA, COO, APEDA, and destination-specific documentation. Zero shortcuts on paperwork.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">48-Hour Response Guarantee</div>
+        <p class="why-text">Every inquiry acknowledged within 4 hours. Full quotation with spec sheets and pricing delivered within 48 hours — guaranteed.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">One Partner, All Categories</div>
+        <p class="why-text">Agro, FMCG, and Non-Medical Consumables from a single accountable supplier — eliminating fragmented sourcing and multiple vendor risks.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🚢</div>
+        <div class="why-title">End-to-End Logistics</div>
+        <p class="why-text">FCL/LCL shipping, FOB/CIF/DDP Incoterm options, pre-shipment inspection coordination, and real-time shipment tracking.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🏷️</div>
+        <div class="why-title">Private Label Ready</div>
+        <p class="why-text">Custom branding, destination-compliant packaging, and OEM manufacturing partnerships. Your brand, Indian quality.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌐</div>
+        <div class="why-title">Direct Farm &amp; Factory Access</div>
+        <p class="why-text">Supply chain bypasses middlemen. We source directly from FSSAI-approved and ISO-certified facilities for better pricing and quality control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─────────────────────────────── -->
+<section id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From Inquiry to Delivery in 6 Steps</h2>
+      <div class="divider"></div>
+      <p class="section-sub">A transparent, reliable process designed to give international buyers full visibility at every stage of the trade.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Send Inquiry</div>
+        <div class="step-desc">Share product name, volume, destination port, and packaging requirements via email or WhatsApp.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Quote &amp; Samples</div>
+        <div class="step-desc">Formal quotation within 48 hrs. Samples dispatched within 5–7 business days on request.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Order Confirmation</div>
+        <div class="step-desc">Confirm PO with agreed terms. Proforma Invoice issued. Payment terms: TT Advance, LC, or as negotiated.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Production &amp; QC</div>
+        <div class="step-desc">Product sourced or manufactured. Pre-shipment inspection conducted. All documents prepared.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-title">Shipping &amp; Docs</div>
+        <div class="step-desc">Container booked, goods loaded. Full document package sent: BL, COA, COO, Invoice, Packing List.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">06</div>
+        <div class="step-title">Delivery &amp; Support</div>
+        <div class="step-desc">Real-time tracking shared. Post-delivery support for any queries or follow-up orders.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CERTIFICATIONS ─────────────────────── -->
+<section id="certifications">
+  <div class="container">
+    <div class="cert-header reveal">
+      <div class="section-label">Compliance &amp; Certifications</div>
+      <h2 class="section-title" style="font-size:2rem">Every Shipment Fully Documented &amp; Compliant</h2>
+    </div>
+    <div class="cert-columns reveal">
+      <div class="cert-col">
+        <div class="cert-col-header">Indian Regulatory</div>
+        <div class="cert-col-body">
+          <div class="cert-item">APEDA Registration (Agro Exports)</div>
+          <div class="cert-item">FSSAI License (Food Safety)</div>
+          <div class="cert-item">IEC — Import Export Code</div>
+          <div class="cert-item">MSME / Udyam Registration</div>
+          <div class="cert-item">GST Registration</div>
+        </div>
+      </div>
+      <div class="cert-col">
+        <div class="cert-col-header">International Standards</div>
+        <div class="cert-col-body">
+          <div class="cert-item">ISO 9001 — Quality Management</div>
+          <div class="cert-item">ISO 22000 — Food Safety</div>
+          <div class="cert-item">Halal Certification (on request)</div>
+          <div class="cert-item">Organic Certification (on request)</div>
+          <div class="cert-item">HACCP Compliance</div>
+        </div>
+      </div>
+      <div class="cert-col">
+        <div class="cert-col-header">Destination Markets</div>
+        <div class="cert-col-body">
+          <div class="cert-item">FDA Ready (USA)</div>
+          <div class="cert-item">UK Food Standards (UK)</div>
+          <div class="cert-item">BRC Certified Partners</div>
+          <div class="cert-item">EU Regulations Compliant</div>
+          <div class="cert-item">REACH / RoHS (Consumables)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BAND ─────────────────────────────── -->
+<section id="cta-band">
+  <div class="container" style="position:relative; z-index:1;">
+    <div class="cta-eyebrow">Start Your Trade Journey Today</div>
+    <h2 class="cta-h2">Ready to Source from India?</h2>
+    <p class="cta-sub">Send us your product requirement and receive a full quotation within 48 hours.</p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        Request a Quote
+      </a>
+      <a href="mailto:exports@vikalimpex.com" class="btn-ghost">
+        ✉ exports@vikalimpex.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's Talk<br/>Trade.</h2>
+        <div class="divider"></div>
+        <p class="section-sub">We welcome inquiries from importers, distributors, and trade buyers worldwide. Our team responds to all professional inquiries within 4 business hours.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <a href="mailto:exports@vikalimpex.com" class="contact-item-value" style="color:inherit;">exports@vikalimpex.com</a>
+              <div class="contact-item-sub">Professional inquiries only</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <div class="contact-item-label">WhatsApp Business</div>
+              <a href="https://wa.me/918766490934" target="_blank" class="contact-item-value" style="color:inherit;">+918766490934</a>
+              <div class="contact-item-sub">Fast communication for active buyers</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">Website</div>
+              <a href="https://www.vikalimpex.com" target="_blank" class="contact-item-value" style="color:inherit;">www.vikalimpex.com</a>
+              <div class="contact-item-sub">Export House · India</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <div>
+              <div class="contact-item-label">Response Time</div>
+              <div class="contact-item-value">4 Hours Acknowledgment</div>
+              <div class="contact-item-sub">48-hour full quote with spec sheets</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <div class="form-title">Send an Inquiry</div>
+        <div class="form-sub">Fill in the details below and our export team will respond within 4 business hours.</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name"/>
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@company.com"/>
+          </div>
+          <div class="form-group">
+            <label>Country</label>
+            <select>
+              <option value="">Select market</option>
+              <option>UAE / Middle East</option>
+              <option>United Kingdom</option>
+              <option>United States</option>
+              <option>Nigeria</option>
+              <option>Kenya</option>
+              <option>Egypt</option>
+              <option>Germany</option>
+              <option>Netherlands</option>
+              <option>France</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Product Category</label>
+            <select>
+              <option value="">Select category</option>
+              <option>Agro Products</option>
+              <option>FMCG Products</option>
+              <option>Non-Medical Consumables</option>
+              <option>Multiple Categories</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Incoterm Preference</label>
+            <select>
+              <option value="">Select Incoterm</option>
+              <option>FOB</option>
+              <option>CIF</option>
+              <option>DDP</option>
+              <option>Not Sure</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Message / Product Requirements</label>
+          <textarea placeholder="Please share: product name, approximate volume, destination port, packaging requirements, and any special certifications needed (Halal, Organic, etc.)"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">
+          Send Inquiry — Get Quote Within 48 Hours →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Vikal Impex</div>
+        <div class="footer-brand-sub">Export House · India</div>
+        <p class="footer-about">A professionally managed Indian export company delivering Agro Products, FMCG goods, and Non-Medical Consumables to global buyers with full compliance and end-to-end logistics support.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Products</div>
+        <ul class="footer-links">
+          <li><a href="#products">Agro Products</a></li>
+          <li><a href="#products">FMCG Goods</a></li>
+          <li><a href="#products">Non-Medical Consumables</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Markets</div>
+        <ul class="footer-links">
+          <li><a href="#markets">UAE &amp; Middle East</a></li>
+          <li><a href="#markets">United Kingdom</a></li>
+          <li><a href="#markets">United States</a></li>
+          <li><a href="#markets">Africa</a></li>
+          <li><a href="#markets">Europe</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#process">How to Order</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:exports@vikalimpex.com">exports@vikalimpex.com</a></li>
+          <li><a href="https://wa.me/918766490934" target="_blank">WhatsApp: +918766490934</a></li>
+          <li><a href="https://www.vikalimpex.com" target="_blank">www.vikalimpex.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Vikal Impex. Export House, India. All rights reserved.</div>
+      <div class="footer-tagline">"Reliably Indian. Globally Ready."</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ── Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+  });
+});
+
+// ── Active nav links on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+
+// ── Product tab switcher
+function showCat(id, btn) {
+  document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// ── Form submit
+function handleSubmit() {
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = '✓ Inquiry Sent! We\'ll respond within 4 hours.';
+  btn.style.background = '#276749';
+  btn.style.color = '#fff';
+  setTimeout(() => {
+    btn.textContent = 'Send Inquiry — Get Quote Within 48 Hours →';
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 4000);
+}
+
+// ── Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
